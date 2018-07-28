@@ -1,6 +1,6 @@
 import unittest
 
-from problem_one import isUnique
+from problem_1 import isUnique
 
 class TestIsUnique(unittest.TestCase):
     def test_single_val(self):

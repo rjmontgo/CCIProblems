@@ -1,14 +1,14 @@
 import unittest
 
-from problem_seven import rotate
+from problem_7 import rotate
 
 class TestRotate(unittest.TestCase):
 
     def test_one_by_one(self):
-        self.assertEquals(rotate([[1]]), [[1]])
+        self.assertEqual(rotate([[1]]), [[1]])
 
     def test_two_by_two(self):
-        self.assertEquals(rotate([
+        self.assertEqual(rotate([
         [1, 2],
         [3, 4]
         ]),[
@@ -17,7 +17,7 @@ class TestRotate(unittest.TestCase):
         ])
 
     def test_three_by_three(self):
-        self.assertEquals(rotate([
+        self.assertEqual(rotate([
         [1, 2, 3],
         [4, 5, 6],
         [7, 8, 9]
@@ -28,7 +28,7 @@ class TestRotate(unittest.TestCase):
         ])
 
     def test_four_by_four(self):
-        self.assertEquals(rotate([
+        self.assertEqual(rotate([
         [1, 2, 3, 4],
         [5, 6, 7, 8],
         [9, 10, 11, 12],
@@ -41,7 +41,7 @@ class TestRotate(unittest.TestCase):
         ])
 
     def test_five_by_five(self):
-        self.assertEquals(rotate([
+        self.assertEqual(rotate([
         [1, 2, 3, 4, 5],
         [6, 7, 8, 9, 10],
         [11, 12, 13, 14, 15],

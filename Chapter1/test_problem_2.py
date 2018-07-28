@@ -1,6 +1,6 @@
 import unittest
 
-from problem_two import isPermutation
+from problem_2 import isPermutation
 
 class TestIsPermutation(unittest.TestCase):
     def test_one_char_true(self):

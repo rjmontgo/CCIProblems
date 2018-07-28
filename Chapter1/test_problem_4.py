@@ -1,6 +1,6 @@
 import unittest
 
-from problem_four import isPalinPerm
+from problem_4 import isPalinPerm
 
 class TestIsPalinPerm(unittest.TestCase):
     def test_one_char(self):

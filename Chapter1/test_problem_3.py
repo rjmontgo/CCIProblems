@@ -1,6 +1,6 @@
 import unittest
 
-from problem_three import urlify
+from problem_3 import urlify
 
 class TestURLify(unittest.TestCase):
 

@@ -1,6 +1,6 @@
 import unittest
 
-from problem_six import compress
+from problem_6 import compress
 
 class TestCompress(unittest.TestCase):
 
