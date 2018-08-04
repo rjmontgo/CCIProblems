@@ -20,6 +20,16 @@ class LinkedList:
             current = current.next
         return ' -> '.join(dataString)
 
+    def __eq__(self, other):
+        thisNode = self.root
+        otherNode = other.root
+
+        while (thisNode and otherNode):
+            if thisNode.data != otherNode.data:
+                return False
+            thisNode, otherNode = thisNode.next, otherNode.next
+        return thisNode == otherNode
+
 class Node:
 
     def __init__(self, data=None, next=None):
