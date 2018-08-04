@@ -6,11 +6,19 @@ class LinkedList:
         if self.root is None:
             self.root = Node(data)
 
-        curr = self.root
-        while(curr.next):
-            curr = curr.next
+        else:
+            curr = self.root
+            while(curr.next):
+                curr = curr.next
+            curr.next = Node(data)
 
-        curr.next = Node(data)
+    def __str__(self):
+        dataString = []
+        current = self.root
+        while (current):
+            dataString.append(str(current.data))
+            current = current.next
+        return ' -> '.join(dataString)
 
 class Node:
 

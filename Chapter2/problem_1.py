@@ -4,8 +4,35 @@ from lib.linkedlist import LinkedList
 # Write code to remove duplicates from a LinkedList
 
 def removeDups(linkedList):
-    setPrevElem = {}
+    # Check if list is empty
+    if linkedList.root is None:
+        return linkedlist
+
+    # initialize foundData with setData
+    foundData = { linkedList.root.data }
+    # set current pointer and previous pointer for removal
+    current = linkedList.root.next
+    previous = linkedList.root
+    # While the current node is not None
+    while(current):
+        # if the data in the current element is in the set
+        if current.data in foundData:
+            # Remove the element
+            ## set previous element's .next to the current element's .next
+            prev.next = current.next
+        else:
+            # Add the current data in the element to the set
+            foundData.add(current.data)
+            prev = current
+
+
+        # update the pointers
+        current = current.next
+
+    # we have reached the end and can return the list
     return linkedList
+
+
 
 
 

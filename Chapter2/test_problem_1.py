@@ -8,16 +8,14 @@ class TestRemoveDups(unittest.TestCase):
         node1 = l1.root
         node2 = l2.root
 
-        if ((not node1 or not node2) or node1.data != node2.data):
-            return False
-
-        while (node1.next and node2.next):
-            if (not node2) or (node1.data != node2.data):
+        while node1 and node2:
+            if (node1.data != node2.data):
                 return False
+
             node1 = node1.next
             node2 = node2.next
 
-        return node1.next.data == node2.next.data
+        return not (node1 or node2)
 
     def setUp(self):
         self.l1 = LinkedList()
@@ -27,7 +25,7 @@ class TestRemoveDups(unittest.TestCase):
         self.l1.add(1)
         self.l2.add(1)
 
-        self.assertEqual(self.helper_equal_lists(removeDups(self.l1), self.l2),
+        self.assertEqual(self.helper_equal_lists(self.l2, removeDups(self.l1)),
                         True)
 
     def test_one_dup(self):
@@ -38,8 +36,147 @@ class TestRemoveDups(unittest.TestCase):
         self.l2.add(1)
         self.l2.add(2)
 
-        self.assertEqual(self.helper_equal_lists(removeDups(self.l1), self.l2),
+        self.assertEqual(self.helper_equal_lists(self.l2, removeDups(self.l1)),
                         True)
+
+    def test_three_dups(self):
+        self.l1.add(1)
+        self.l1.add(2)
+        self.l1.add(2)
+        self.l1.add(3)
+        self.l1.add(3)
+
+        self.l2.add(1)
+        self.l2.add(2)
+        self.l2.add(3)
+
+        self.assertEqual(self.helper_equal_lists(self.l2, removeDups(self.l1)),
+                        True)
+
+    def test_high_dup_occurence(self):
+        self.l1.add(1)
+        self.l1.add(2)
+        self.l1.add(2)
+        self.l1.add(3)
+        self.l1.add(3)
+        self.l1.add(3)
+        self.l1.add(3)
+
+        self.l2.add(1)
+        self.l2.add(2)
+        self.l2.add(3)
+
+        self.assertEqual(self.helper_equal_lists(self.l2, removeDups(self.l1)),
+                        True)
+
+    def test_interspersed_dups(self):
+        self.l1.add(1)
+        self.l1.add(2)
+        self.l1.add(2)
+        self.l1.add(3)
+        self.l1.add(3)
+        self.l1.add(4)
+        self.l1.add(4)
+        self.l1.add(3)
+        self.l1.add(5)
+        self.l1.add(5)
+        self.l1.add(5)
+        self.l1.add(3)
+        self.l1.add(2)
+        self.l1.add(6)
+        self.l1.add(6)
+
+        self.l2.add(1)
+        self.l2.add(2)
+        self.l2.add(3)
+        self.l2.add(4)
+        self.l2.add(5)
+        self.l2.add(6)
+
+        self.assertEqual(self.helper_equal_lists(self.l2, removeDups(self.l1)),
+                        True)
+
+    def test_out_of_order_dups(self):
+        self.l1.add(1)
+        self.l1.add(3)
+        self.l1.add(2)
+        self.l1.add(5)
+        self.l1.add(2)
+        self.l1.add(3)
+        self.l1.add(4)
+        self.l1.add(4)
+        self.l1.add(3)
+        self.l1.add(5)
+        self.l1.add(5)
+        self.l1.add(3)
+        self.l1.add(2)
+        self.l1.add(6)
+        self.l1.add(6)
+
+        self.l2.add(1)
+        self.l2.add(3)
+        self.l2.add(2)
+        self.l2.add(5)
+        self.l2.add(4)
+        self.l2.add(6)
+
+        self.assertEqual(self.helper_equal_lists(self.l2, removeDups(self.l1)),
+                        True)
+
+    def test_invalid_case_dups_in_expected(self):
+        self.l1.add(1)
+        self.l1.add(3)
+        self.l1.add(2)
+        self.l1.add(5)
+        self.l1.add(2)
+        self.l1.add(3)
+        self.l1.add(4)
+        self.l1.add(4)
+        self.l1.add(3)
+        self.l1.add(5)
+        self.l1.add(5)
+        self.l1.add(3)
+        self.l1.add(2)
+        self.l1.add(6)
+        self.l1.add(6)
+
+        self.l2.add(1)
+        self.l2.add(3)
+        self.l2.add(3)
+        self.l2.add(2)
+        self.l2.add(5)
+        self.l2.add(4)
+        self.l2.add(6)
+
+        self.assertEqual(self.helper_equal_lists(self.l2, removeDups(self.l1)),
+                        False)
+
+    def test_invalid_case_dups_out_of_order(self):
+        self.l1.add(1)
+        self.l1.add(3)
+        self.l1.add(2)
+        self.l1.add(5)
+        self.l1.add(2)
+        self.l1.add(3)
+        self.l1.add(4)
+        self.l1.add(4)
+        self.l1.add(3)
+        self.l1.add(5)
+        self.l1.add(5)
+        self.l1.add(3)
+        self.l1.add(2)
+        self.l1.add(6)
+        self.l1.add(6)
+
+        self.l2.add(3)
+        self.l2.add(1)
+        self.l2.add(2)
+        self.l2.add(5)
+        self.l2.add(4)
+        self.l2.add(6)
+
+        self.assertEqual(self.helper_equal_lists(self.l2, removeDups(self.l1)),
+                        False)
 
 if __name__ is '__main__':
     unittest.main()
