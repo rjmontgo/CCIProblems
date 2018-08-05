@@ -1,8 +1,10 @@
 class LinkedList:
     def __init__(self):
         self.root = None
+        self.size = 0
 
     def add(self, data):
+        self.size += 1
         if self.root is None:
             self.root = Node(data)
 
@@ -11,6 +13,11 @@ class LinkedList:
             while(curr.next):
                 curr = curr.next
             curr.next = Node(data)
+
+    def insertAtHead(self, data):
+        temp = self.root
+        self.root = Node(data, temp)
+        self.size += 1
 
     def __str__(self):
         dataString = []
@@ -29,6 +36,9 @@ class LinkedList:
                 return False
             thisNode, otherNode = thisNode.next, otherNode.next
         return thisNode == otherNode
+
+    def __len__(self):
+        return self.size
 
 class Node:
 
