@@ -1,0 +1,5 @@
+[
+  "test_problem_6.py::test_all_dogs",
+  "test_problem_6.py::test_all_cats",
+  "test_problem_6.py::test_mix_dogs_and_cats"
+]
