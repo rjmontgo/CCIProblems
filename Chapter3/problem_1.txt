@@ -1,0 +1,11 @@
+According to CCI the implementation is too difficult/cumbersome to be used in
+an interview - and I agree.
+
+If I were to do this - and the solution in the book confirms this - I would
+divide the array evenly into 3 equal sections. Then during an add where there is
+capacity in the array, but not in the stack that is being added to we would have
+the array be circular such that elements are shifted to make room for the next
+element.
+
+This way the array would be using all the capacity possible to store the three
+stacks before increasing capacity.
