@@ -21,20 +21,19 @@ class SetOfStacks:
 
     def push(self, data):
         if not self.stackset or \
-        len(self.stackset[len(self.stackset) - 1]) == STACK_HEIGHT:
+        len(self.stackset[len(self.stackset) - 1]) == self.STACK_HEIGHT:
             self.stackset.append([data])
         else:
             self.stackset[len(self.stackset) - 1].append(data)
 
     def pop(self):
         if not self.stackset:
+            raise BufferError
+        else:
+            ret = self.stackset[len(self.stackset) - 1].pop()
+            if not self.stackset[len(self.stackset) - 1]:
+                self.stackset.pop()
+            return ret
 
     def peek(self):
-        return self.stackset[len(self.stackset) - 1]
-
-
-
-
-    def pop(self):
-
-    def peek(self):
+        return self.stackset[len(self.stackset) - 1].peek()
