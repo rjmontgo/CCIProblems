@@ -1,5 +1,6 @@
 [
-  "test_problem_2.py::test_build_one_node_tree",
-  "test_problem_2.py::test_build_two_node_tree",
-  "test_problem_2.py::test_build_seven_node_tree"
+  "test_problem_3.py::test_one_node",
+  "test_problem_3.py::test_three_nodes",
+  "test_problem_3.py::test_five_nodes",
+  "test_problem_3.py::test_seven_nodes"
 ]
