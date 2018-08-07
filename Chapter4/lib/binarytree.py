@@ -20,7 +20,8 @@ class BinaryTree:
 
 class Node:
 
-    def __init__(self, left=None, right=None, data=None):
+    def __init__(self, left=None, right=None, data=None, parent=None):
         self.left = left
         self.right = right
         self.data = data
+        self.parent = parent
